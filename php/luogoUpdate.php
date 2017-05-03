@@ -20,9 +20,10 @@
     $tipo_via= ($phpAV[7]);
     $via= ($phpAV[8]);
     $numero_civico= $phpAV[9];
+    $descrizione= $_POST["descrizioneE"];
 
-    $stmt = $conn->prepare("UPDATE Luogo SET lettera= ?, colore= ?, nome= ?, latitudine= ?, longitudine= ?, citta= ?, tipo_via= ?, via= ?, numero_civico= ? WHERE id= ?");
-    $stmt->bind_param("sssddsssii", $lettera, $colore, $nome, $latitudine, $longitudine, $citta, $tipo_via, $via, $numero_civico, $id);
+    $stmt = $conn->prepare("UPDATE Luogo SET lettera= ?, colore= ?, nome= ?, latitudine= ?, longitudine= ?, citta= ?, tipo_via= ?, via= ?, numero_civico= ?, descrizione= ? WHERE id= ?");
+    $stmt->bind_param("sssddsssisi", $lettera, $colore, $nome, $latitudine, $longitudine, $citta, $tipo_via, $via, $numero_civico, $descrizione, $id);
     $stmt->execute();
     $stmt->close();
 

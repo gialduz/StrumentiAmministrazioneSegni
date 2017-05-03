@@ -15,7 +15,7 @@ $('#addSubmit').click(function () {
         $.ajax({
             type: "POST",
             url: "../php/personaAdd.php",
-            data: { arrayValue: arrayValue }
+            data: { arrayValue: arrayValue, bio: $("#biografia").val() }
         }).done(function() {
              //ricarica AJAX
             location.reload();

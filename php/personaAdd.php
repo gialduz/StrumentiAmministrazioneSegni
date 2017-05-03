@@ -1,4 +1,7 @@
 <?php
+   
+
+
     require 'configurazione.php';// richiamo il file di configurazione
     require 'connessione.php';// richiamo lo script responsabile della connessione a MySQL
     function test_input($data) {
@@ -18,8 +21,8 @@
     $titolo = test_input($phpAV[3]);
     $tipo = $phpAV[4];
 
-    $stmt = $conn->prepare("INSERT INTO Persona VALUES (NULL, ?, ?, ?, ?, ?, 'testBio')");
-    $stmt->bind_param("ssssi", $nome, $cognome, $alt_name, $titolo, $tipo);
+    $stmt = $conn->prepare("INSERT INTO Persona VALUES (NULL, ?, ?, ?, ?, ?, ?, NULL, NULL)");
+    $stmt->bind_param("ssssis", $nome, $cognome, $alt_name, $titolo, $tipo, $_POST["bio"]);
     $stmt->execute();
     $stmt->close();
 

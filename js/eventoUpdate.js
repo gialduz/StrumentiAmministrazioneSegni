@@ -31,7 +31,9 @@ $('.editBtn').click(function () {
     $("#minEdit").val(parseInt(arrayTabella[row][4]));
     $('#maxEdit').val(parseInt(arrayTabella[row][5]));
     $('#ticketEdit').val(parseInt(arrayTabella[row][6]));
-    $('#stEdit').val(parseInt(arrayTabella[row][7]));    
+    $('#stEdit').val(parseInt(arrayTabella[row][7]));
+    $("#descrizione_itaE").val(arrayTabella[row][8]);
+    $("#descrizione_engE").val(arrayTabella[row][9]);
     
     $("#editBox").show(500);
 
@@ -53,11 +55,12 @@ $('#editSubmit').click(function () {
     });
     
     
+    
     if (popupVerifica == true) {
         $.ajax({
             type: "POST",
             url: "../php/eventoUpdate.php",
-            data: { arrayValue: arrayValue }
+            data: { arrayValue: arrayValue, dITA: $("#descrizione_itaE").val(), dENG: $("#descrizione_engE").val() }
         }).done(function() {
              //ricarica AJAX
             location.reload();

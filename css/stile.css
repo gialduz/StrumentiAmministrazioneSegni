@@ -1,3 +1,9 @@
+#corpo{padding:0 25px 0 25px;}
+.padded{padding: 25px;}
+td > a > img{max-height:50px;}
+
+.testoTagliato{width: 100px; white-space: nowrap; overflow: hidden; text-overflow: /*ellipsis*/clip; }
+
 .unquinto {
     width: 20%;
     float: left;
@@ -50,10 +56,12 @@
 #updateBox, #editBox{position: fixed; max-width: 1200px; bottom: 0px;}
 
 th, td{
-    box-shadow: inset 1px 1px 1px #000;
-    -webkit-box-shadow: inset 1px 1px 1px #000;
-    -moz-box-shadow: inset 1px 1px 1px #000;
-    -o-box-shadow: inset 1px 1px 1px #000;
+    column-span: 0;
+    margin: 0;
+    box-shadow: inset 0px 0px 0px 1px #000;
+    -webkit-box-shadow: inset 0px 0px 0px 1px #000;
+    -moz-box-shadow: inset 0px 0px 0px 1px #000;
+    -o-box-shadow: inset 0px 0px 0px 1px #000;
     padding:8px 4px 8px 4px;
 }
 

@@ -25,8 +25,8 @@
     $via = $phpAV[7];
     $numero_civico = $phpAV[8];
     
-    $stmt = $conn->prepare("INSERT INTO Luogo VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssddsssi", $lettera, $colore, $nome, $latitudine, $longitudine, $citta, $tipo_via, $via, $numero_civico);
+    $stmt = $conn->prepare("INSERT INTO Luogo VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)");
+    $stmt->bind_param("sssddsssis", $lettera, $colore, $nome, $latitudine, $longitudine, $citta, $tipo_via, $via, $numero_civico, $_POST["descrizione"]);
     $stmt->execute();
     $stmt->close();
 ?>

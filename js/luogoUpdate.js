@@ -30,7 +30,8 @@ $('.editBtn').click(function () {
     $('#editCitta').val(arrayTabella[row][6]);
     $('#editTipoVia').val(arrayTabella[row][7]); 
     $('#editVia').val(arrayTabella[row][8]);
-    $('#editNumeroCivico').val(parseInt(arrayTabella[row][9]));    
+    $('#editNumeroCivico').val(parseInt(arrayTabella[row][9]));  
+    $("#descrizioneE").val(arrayTabella[row][10]);
 
     
     $("#editBox").show(500);
@@ -57,7 +58,7 @@ $('#editSubmit').click(function () {
         $.ajax({
             type: "POST",
             url: "../php/luogoUpdate.php",
-            data: { arrayValue: arrayValue }
+            data: { arrayValue: arrayValue, descrizioneE: $("#descrizioneE").val() }
         }).done(function() {
              //ricarica AJAX
             location.reload();

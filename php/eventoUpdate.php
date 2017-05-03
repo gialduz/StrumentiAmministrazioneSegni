@@ -20,8 +20,8 @@
     $ticket= ($phpAV[6]);
     $speciale_ragazzi= $phpAV[7];
 
-    $stmt = $conn->prepare("UPDATE Evento SET nome= ?, durata= ?, tipologia= ?, eta_min= ?, eta_max= ?, ticket= ?, speciale_ragazzi= ? WHERE id= ?");
-    $stmt->bind_param("siiiiiii", $nome, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $id);
+    $stmt = $conn->prepare("UPDATE Evento SET nome= ?, durata= ?, tipologia= ?, eta_min= ?, eta_max= ?, ticket= ?, speciale_ragazzi= ?, descrizione_ita= ?, descrizione_eng= ? WHERE id= ?");
+    $stmt->bind_param("siiiiiissi", $nome, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $_POST["dITA"], $_POST["dENG"], $id);
     $stmt->execute();
     $stmt->close();
 ?>

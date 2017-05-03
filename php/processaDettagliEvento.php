@@ -27,8 +27,8 @@
     ?>
 </head>
 
-<body style="max-width:1200px; margin:0 auto;" class="w3-border w3-border-red">    
-    
+<body style="max-width:1200px; margin:0 auto;">    
+    <div id="corpo">
     <!-- "banner" -->
     <div class="w3-row w3-center w3-xxlarge ">
         <a href="../amministrazione.html"><div class="w3-third w3-deep-orange w3-hover-orange"><i class='fa fa-home fa-2x' aria-hidden='true'></i> Amministrazione</div></a>
@@ -300,6 +300,7 @@
     $conn->close();
     ?>
     <div class="w3-center" style="height:100px"><br>FINE</div>
+    </div>
 </body>
 
 </html>

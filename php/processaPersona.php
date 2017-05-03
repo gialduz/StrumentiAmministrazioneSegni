@@ -18,7 +18,7 @@
 </head>
 
 <body style="max-width:1200px; margin:0 auto;" class="w3-border w3-border-red">   
-
+    <div id="corpo">
     
     <div class="w3-row">
         <a href="../amministrazione.html"><div class="w3-quarter w3-center w3-xxlarge w3-blue w3-hover-cyan "><i class="fa fa-home fa-2x"></i> Home</div></a>
@@ -30,43 +30,55 @@
         <div class="w3-yellow w3-row">
             <h3>Aggiungi Persona</h3>
             <form id="addForm">
-                <div class="w3-half">
-                    <div class="w3-third">
-                        <label>Nome</label>
-                        <input type="text" name="nome" value="" class="w3-input w3-border">
+                <div class="w3-row">
+                    <div class="w3-half">
+                        <div class="w3-third">
+                            <label>Nome</label>
+                            <input type="text" name="nome" value="" class="w3-input w3-border">
+                        </div>
+                        <div class="w3-third">
+                            <label>Cognome</label>
+                            <input type="text" name="cognome" value="" class="w3-input w3-border">
+                        </div>
+                        <div class="w3-third">
+                            <label>ALT_NAME</label>
+                            <input type="text" name="alt_name" value="" class="w3-input w3-border">
+                        </div>
                     </div>
-                    <div class="w3-third">
-                        <label>Cognome</label>
-                        <input type="text" name="cognome" value="" class="w3-input w3-border">
-                    </div>
-                    <div class="w3-third">
-                        <label>ALT_NAME</label>
-                        <input type="text" name="alt_name" value="" class="w3-input w3-border">
-                    </div>
-                </div>
-                <div class="w3-half">
-                    <div class="w3-twothird">
-                        <label>Titolo</label>
-                        <input type="text" name="titolo" value="" class="w3-input w3-border">
-                    </div>
-                    <div class="w3-third">
-                        <label>Tipologia</label>
-                        <select id="addTipo" name="selectTipo" class="w3-select">
-                            <option value='0'> - </option>
-                            <?php 
-                            $stmt = $conn->prepare("SELECT id, nome FROM tipologiaPersona WHERE 1");
-                            $stmt->execute();
-                            $stmt->bind_result($id, $nome);
+                    <div class="w3-half">
+                        <div class="w3-twothird">
+                            <label>Titolo</label>
+                            <input type="text" name="titolo" value="" class="w3-input w3-border">
+                        </div>
+                        <div class="w3-third">
+                            <label>Tipologia</label>
+                            <select id="addTipo" name="selectTipo" class="w3-select">
+                                <option value='0'> - </option>
+                                <?php 
+                                $stmt = $conn->prepare("SELECT id, nome FROM tipologiaPersona WHERE 1");
+                                $stmt->execute();
+                                $stmt->bind_result($id, $nome);
 
-                            while($stmt->fetch()){
-                                echo "<option value=".$id.">" .$nome. "</option>";
-                            }
-                            $stmt->close();
-                            ?>
-                        </select>                        
+                                while($stmt->fetch()){
+                                    echo "<option value=".$id.">" .$nome. "</option>";
+                                }
+                                $stmt->close();
+                                ?>
+                            </select>                        
+                        </div>
                     </div>
                 </div>
-            <input id="addSubmit" type="button" value="Submit">
+                <div class="w3-row">
+                    <div class="w3-threequarter w3-center">
+                        <label>biografia</label>
+                        <textarea id="biografia" rows="4" cols="50"></textarea>
+                    </div>
+                    
+                
+                    <div class="w3-quarter w3-center">
+                        <input id="addSubmit" class="w3-button" type="button" value="Submit">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -118,9 +130,14 @@
                         </div>
                     </div>        
                 </div>
+            
+                <div class="w3-twothird w3-center">
+                    <label>biografia</label>
+                    <textarea id="biografiaE" rows="4" cols="50"></textarea>
+                </div>
                 
                 
-            <input id="editSubmit" type="button" value="Submit">
+                <input id="editSubmit" type="button" value="Submit">
             </form>
             
              <a href="#" onClick="return false;"><i id="closeUpd" class="fa fa-close w3-xxlarge" style="float:right"> [annulla modifiche]</i></a>
@@ -149,7 +166,7 @@
     <script src="../js/personaDelete.js"></script>
     <script src="../js/personaUpdate.js"></script>
     
-    
+    </div>
 </body>
 
 </html>

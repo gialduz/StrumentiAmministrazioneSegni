@@ -19,10 +19,9 @@
     
 </head>
 
-<body style="max-width:1200px; margin:0 auto;" class="w3-border w3-border-red">   
+<body style="max-width:1200px; margin:0 auto;">   
     
-    
-    
+    <div id="corpo">
     <div class="w3-row">
         <a href="../amministrazione.html"><div class="w3-quarter w3-center w3-xxlarge w3-blue w3-hover-cyan "><i class="fa fa-home fa-2x"></i> Home</div></a>
         <div class="w3-threequarter w3-center w3-xxlarge w3-green"><i class="fa fa-globe fa-2x"></i> LUOGHI</div>
@@ -108,7 +107,16 @@
                     <!--descrizioneIta: <input type="text" name="descrizione_ita"><br>
                     descrizioneEng: <input type="text" name="descrizione_eng"><br>-->
                 </div>
-            <input id="addSubmit" type="button" value="Submit">
+                
+                <div class="w3-row">
+                    <div class="w3-twothird w3-center">
+                        <label>descrizione</label>
+                        <textarea id="descrizione" rows="4" cols="50"></textarea>
+                    </div>
+                    <div class="w3-third w3-center">
+                        <input id="addSubmit" type="button" value="Submit">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -195,7 +203,19 @@
                         </div>
                     </div>
                 </div>
-            <input id="editSubmit" type="button" value="Submit">
+                
+                
+                
+                <div class="w3-row">
+                    <div class="w3-twothird w3-center">
+                        <label>descrizione</label>
+                        <textarea id="descrizioneE" rows="4" cols="50"></textarea>
+                    </div>
+                    <div class="w3-third w3-center">
+                        <input id="editSubmit" type="button" value="Submit">
+                    </div>
+                </div>
+            
             </form>
             
              <a href="#" onClick="return false;"><i id="closeUpd" class="fa fa-close w3-xxlarge" style="float:right"> [annulla modifiche]</i></a>
@@ -220,6 +240,7 @@
     $conn->close();
     ?>
     
+    </div>
 </body>
 
 </html>
