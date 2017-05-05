@@ -24,7 +24,7 @@
     <div id="corpo">
     <div class="w3-row">
         <a href="../amministrazione.html"><div class="w3-quarter w3-center w3-xxlarge w3-blue w3-hover-cyan "><i class="fa fa-home fa-2x"></i> Home</div></a>
-        <div class="w3-threequarter w3-center w3-xxlarge w3-green"><i class="fa fa-globe fa-2x"></i> LUOGHI</div>
+        <div class="w3-threequarter w3-center w3-xxlarge w3-blue"><i class="fa fa-globe fa-2x"></i> LUOGHI</div>
     </div> 
     
     

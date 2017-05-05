@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../css/stile.css">
     <script src="../js/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="js/JIC.js" type="text/javascript"></script>
 </head>
 
 <body style="max-width:1200px; margin:0 auto;" >

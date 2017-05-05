@@ -37,7 +37,7 @@ function stampaEventoAmministratore($conn) {
             . $eta_min."</td><td>" 
             . $eta_max. "</td><td>" 
             . $ticket. "</td><td>" 
-            . $speciale_ragazzi. "</td><td> <p class='testoTagliato'>" 
+            . $speciale_ragazzi. "</td><td><p class='testoTagliato'>" 
             . $descrizione_ita. "</p></td><td><p class='testoTagliato'>"
             . $descrizione_eng. "</p></td>"
             ."<td><a href='processaFotoEvento.php?id=".$id."'>". $foto.  "</a></td>"
@@ -128,19 +128,19 @@ function stampaPersonaAmministratore($conn) {
     
     while($stmt->fetch()) {
         if($foto){
-            $foto='<img class="w3-image" src="'.$foto.'">'; 
+            $foto='<div class="imgQuadrataArtista" style="background-image: url('.$foto.');">'; 
         }else{$foto='NO';}
         
-        $daRitornare.= "<tr class='nr'>"
+        $daRitornare.= "<tr class='rigaTabella rigaTipo".$id_tipologia."'>"
             ."<td>" 
             . $id."</td><td>" 
             . $nome. "</td><td>" 
             . $cognome. "</td><td>" 
             . $alt_name.  "</td><td>" 
             . $titolo.  "</td><td>"
-            . $nome_tipologia.  "<p hidden class='idTipoPers'>#".$id_tipologia."</p>" ."</td><td> <p class='testoTagliato'>" 
+            . $nome_tipologia.  "<p hidden class='idTipoPers'>#".$id_tipologia."</p>" ."</td><td><p class='testoTagliato'>" 
             . $biografia.  "</p> </td>"
-            ."<td><a href='processaFotoArtista.php?id=".$id."'>". $foto.  "</a></td>"
+            ."<td><a href='processaFotoArtista.php?id=".$id."'><div>". $foto.  "</div></a></td>"
             ."<td><a href='#' onClick='return false;'><img src='../img/edit_icon.png' style='max-width:25px' class='resp editBtn'></a></td>" 
             ."<td><a href='#' onClick='return false;'><img src='../img/cancel_icon.png' style='max-width:25px' class='resp delBtn'></a></td>" 
             ."</tr>";
@@ -151,7 +151,6 @@ function stampaPersonaAmministratore($conn) {
 }
 
 
-function stampaDescrizione($descrizione){ return substr( $descrizione, 0, 16 ) . "[...]";}
 
 
 

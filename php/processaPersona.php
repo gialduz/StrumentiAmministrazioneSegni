@@ -22,7 +22,7 @@
     
     <div class="w3-row">
         <a href="../amministrazione.html"><div class="w3-quarter w3-center w3-xxlarge w3-blue w3-hover-cyan "><i class="fa fa-home fa-2x"></i> Home</div></a>
-        <div class="w3-threequarter w3-center w3-xxlarge w3-deep-orange"><i class="fa fa-male fa-2x"></i> PERSONE</div>
+        <div class="w3-threequarter w3-center w3-xxlarge w3-orange w3-text-white"><i class="fa fa-male fa-2x"></i> PERSONE</div>
     </div> 
     
     
@@ -161,6 +161,31 @@
     $conn->close();
     ?>
     
+        
+    <script>
+        //PREpendo filtro persona/sponsor/etc..
+        var filtroPersona= "<div class='w3-grey w3-row w3-padding'>"+
+                                "<div id='btnArtisti' class='w3-col s2 w3-button w3-orange' onClick='filtraTipoPersona(1);'>Artisti</div>"+
+                                "<div class='w3-col s2 w3-button w3-purple' onClick='filtraTipoPersona(2);'>Produzione</div>"+
+                                "<div class='w3-col s2 w3-button w3-blue' onClick='filtraTipoPersona(3);'>Compagnie</div>"+
+                                "<div class='w3-col s2 w3-button w3-green' onClick='filtraTipoPersona(4);'>Sponsor</div>"+
+                                "<div class='w3-col s2 w3-button w3-black w3-right' onClick='rimuoviFiltroTipoPersona();'>[TUTTO]</div>"+
+                            "</div>"
+        $("#tabellaPersona").before(filtroPersona);
+        function filtraTipoPersona(tipo){
+            $(".rigaTabella").hide();
+            $(".rigaTipo"+tipo).show();
+        }
+        function rimuoviFiltroTipoPersona(){
+            $(".rigaTabella").show();
+        }
+        
+        
+        
+        
+        //FINGO CLICK ARTISTI
+        $( "#btnArtisti" ).trigger( "click" );
+    </script>
     
     <script src="../js/personaAdd.js"></script>
     <script src="../js/personaDelete.js"></script>
