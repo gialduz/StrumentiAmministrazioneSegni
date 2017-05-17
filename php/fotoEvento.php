@@ -22,12 +22,12 @@
 
     include 'configurazione.php';
     include 'connessione.php';
-    $sql=   "SELECT E.nome, E.foto FROM Evento AS E WHERE E.id= ?";
+    $sql=   "SELECT E.nome, E.foto, E.foto_mini FROM Evento AS E WHERE E.id= ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id_evento);
     $stmt->execute();
-    $stmt->bind_result($nome, $foto);        
+    $stmt->bind_result($nome, $foto, $foto_mini);        
     $stmt->fetch();
     //HEADER
     $daRitornare= '<div class="w3-container w3-red w3-text-white"><h2>'.$nome.'</h2></div>';
@@ -46,6 +46,8 @@
                     <input type="submit" value="Aggiorna foto evento" name="submit" class="w3-button w3-green w3-right">
                     <input type="hidden" name="idEvento" id="idEvento" class="w3-button w3-white" value="'.$id_evento.'">
                     <input type="hidden" name="urlAttuale" id="urlAttuale" class="w3-button w3-white" value="'.$foto.'">
+                    <input type="hidden" name="urlAttualeMini" id="urlAttualeMini" class="w3-button w3-white" value="'.$foto_mini.'">
+
                 </form>
             </div>
         </div>

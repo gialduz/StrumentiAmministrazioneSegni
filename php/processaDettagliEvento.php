@@ -107,7 +107,7 @@
                 <select id="addLuogo" name="selectLuogo" class="w3-select">
                     <option value='0'> - </option>
                     <?php 
-                    $stmt = $conn->prepare("SELECT id, lettera, nome FROM Luogo WHERE 1");
+                    $stmt = $conn->prepare("SELECT id, lettera, nome FROM Luogo WHERE 1 ORDER BY lettera");
                     $stmt->execute();
                     $stmt->bind_result($id, $lettera, $nome);
                     
@@ -170,7 +170,7 @@
                 <select id="editLuogo" name="selectLuogo" class="w3-select">
                     <option value='0'> - </option>
                     <?php 
-                    $stmt = $conn->prepare("SELECT id, lettera, nome FROM Luogo WHERE 1");
+                    $stmt = $conn->prepare("SELECT id, lettera, nome FROM Luogo WHERE 1 ORDER BY lettera");
                     $stmt->execute();
                     $stmt->bind_result($id, $lettera, $nome);
                     

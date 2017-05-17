@@ -11,7 +11,6 @@
     $phpAV = $_POST["arrayValue"];
 
     $nome= test_input($phpAV[0]);
-    $nome= str_replace("'", "''",$nome);
     $durata = $phpAV[1];
     $tipo = $phpAV[2];
     $eta_min = $phpAV[3];

@@ -3,21 +3,13 @@
     require 'connessione.php';// richiamo lo script responsabile della connessione a MySQL
 
     
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-    
     
     $phpAV = $_POST["arrayValue"];
 
 
-    $lettera= test_input($phpAV[0]);
-    $colore = test_input($phpAV[1]);
-    $nome = test_input($phpAV[2]);
-    $nome= str_replace("'", "''",$nome);
+    $lettera= $phpAV[0];
+    $colore = $phpAV[1];
+    $nome = $phpAV[2];
     $latitudine = $phpAV[3];
     $longitudine = $phpAV[4];
     $citta = $phpAV[5];

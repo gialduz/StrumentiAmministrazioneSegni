@@ -88,7 +88,7 @@ if ($uploadOk == 0) {
         
         // CROP 50x50 - overwrite  -----------------------
             //Your Image
-        $imgSrc = $target_file;
+        $imgSrc = $destination_img;
         
             //getting the image dimensions
         list($width, $height) = getimagesize($imgSrc);

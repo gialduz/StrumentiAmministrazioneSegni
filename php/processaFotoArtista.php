@@ -32,12 +32,12 @@
 
                 require 'configurazione.php';
                 require 'connessione.php';
-                $stmt = $conn->prepare("SELECT id, nome, cognome FROM Persona WHERE tipologia=1 ORDER BY id");
+                $stmt = $conn->prepare("SELECT id, nome, cognome, alt_name FROM Persona WHERE 1 ORDER BY id");
                 $stmt->execute();
-                $stmt->bind_result($id, $nome, $cognome);
+                $stmt->bind_result($id, $nome, $cognome, $alt_name);
 
                 while($stmt->fetch()){
-                    echo "<option value=".$id.">" . $nome ." ".$cognome. "</option>";
+                    echo "<option value=".$id.">" . $nome ." ".$cognome." - ".$alt_name. "</option>";
                 }
                 $stmt->close();
                 ?>

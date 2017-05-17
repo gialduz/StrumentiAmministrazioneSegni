@@ -2,11 +2,14 @@
 <?php
 $id_evento= $_POST["idEvento"];
 $url_attuale= $_POST["urlAttuale"];
+$url_attuale_mini= $_POST["urlAttualeMini"];
 
 //GESTIONE UPLOAD FOTO ARTISTA
 
 $target_dir = "../..//App/img/evento/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$target_file_mini = $target_dir . "mini/" . basename($_FILES["fileToUpload"]["name"]);
+
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
@@ -26,7 +29,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 250000) {
+if ($_FILES["fileToUpload"]["size"] > 1000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
@@ -49,11 +52,74 @@ if ($uploadOk == 0) {
         }
         
         
+        // COMPRESSIONE   --------------
+        function compress($source, $destination, $quality) {
+
+            $info = getimagesize($source);
+
+            if ($info['mime'] == 'image/jpeg') 
+                $image = imagecreatefromjpeg($source);
+
+            elseif ($info['mime'] == 'image/gif') 
+                $image = imagecreatefromgif($source);
+
+            elseif ($info['mime'] == 'image/png') 
+                $image = imagecreatefrompng($source);
+
+            imagejpeg($image, $destination, $quality);
+
+            return $destination;
+        }
+        
+        
+        
+        $source_img = $target_file;
+        $destination_img = $target_file_mini;
+        
+            //elimino vecchia foto mini
+        if (file_exists($url_attuale_mini)) {
+            unlink($url_attuale_mini);
+        }
+
+        $d = compress($source_img, $destination_img, 50);
+        // /Compressione
+        /*
+        // CROP 50x50 - overwrite  -----------------------
+            //Your Image
+        $imgSrc = $destination_img;
+        
+            //getting the image dimensions
+        list($width, $height) = getimagesize($imgSrc);
+
+            //saving the image into memory (for manipulation with GD Library)
+        $myImage = imagecreatefromjpeg($imgSrc);
+
+            // calculating the part of the image to use for thumbnail
+        if ($width > $height) {
+          $y = 0;
+          $x = ($width - $height) / 2;
+          $smallestSide = $height;
+        } else {
+          $x = 0;
+          $y = ($height - $width) / 2;
+          $smallestSide = $width;
+        }
+
+            // copying the part into thumbnail
+        $thumbWidth = 1000;
+        $thumbHeight = 200;
+        $thumb = imagecreatetruecolor($thumbWidth, $thumbHeight);
+        imagecopyresampled($thumb, $myImage, 0, 0, $x, $y, $thumbWidth, $thumbHeight, $smallestSide, $smallestSide);
+        
+        imagejpeg($thumb, $target_file_mini);
+        // /Crop 50x50
+        */
+        
         require 'configurazione.php';
         require 'connessione.php';
-        $stmt = $conn->prepare("UPDATE Evento SET foto = ? WHERE id = ?;");
+        $stmt = $conn->prepare("UPDATE Evento SET foto = ?, foto_mini= ? WHERE id = ?;");
         
-        $stmt->bind_param("si", $target_file, $id_evento); //target_file è il path completo di file
+        $stmt->bind_param("ssi", $target_file, $target_file_mini, $id_evento); //target_file è il path completo di file
         $stmt->execute();
 
         $stmt->close();

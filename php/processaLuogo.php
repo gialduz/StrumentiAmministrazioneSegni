@@ -43,7 +43,7 @@
                             <select id="addColore" name="selectColore" class="w3-select">
                                 <option value='0'> - </option>
                                 <?php 
-                                $stmt = $conn->prepare("SELECT DISTINCT colore FROM luogo WHERE 1");
+                                $stmt = $conn->prepare("SELECT DISTINCT colore FROM Luogo WHERE 1");
                                 $stmt->execute();
                                 $stmt->bind_result($colore);
 
@@ -84,7 +84,7 @@
                             <select id="addTipo" name="selectTipo" class="w3-select">
                                 <option value='0'> - </option>
                                 <?php 
-                                $stmt = $conn->prepare("SELECT DISTINCT tipo_via FROM luogo WHERE 1");
+                                $stmt = $conn->prepare("SELECT DISTINCT tipo_via FROM Luogo WHERE 1");
                                 $stmt->execute();
                                 $stmt->bind_result($tipo_via);
 
@@ -141,7 +141,7 @@
                             <select id="editColore" name="selectColore" class="w3-select">
                                 <option value='0'> - </option>
                                 <?php 
-                                $stmt = $conn->prepare("SELECT DISTINCT colore FROM luogo WHERE 1");
+                                $stmt = $conn->prepare("SELECT DISTINCT colore FROM Luogo WHERE 1");
                                 $stmt->execute();
                                 $stmt->bind_result($colore);
 
@@ -182,7 +182,7 @@
                             <select id="editTipoVia" name="selectTipo" class="w3-select">
                                 <option value='0'> - </option>
                                 <?php 
-                                $stmt = $conn->prepare("SELECT DISTINCT tipo_via FROM luogo WHERE 1");
+                                $stmt = $conn->prepare("SELECT DISTINCT tipo_via FROM Luogo WHERE 1");
                                 $stmt->execute();
                                 $stmt->bind_result($tipo_via);
 

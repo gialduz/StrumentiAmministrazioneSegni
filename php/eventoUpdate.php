@@ -12,7 +12,6 @@
 
     $id= $phpAV[0];
     $nome= test_input($phpAV[1]);
-    $nome= str_replace("'", "''",$nome);
     $durata= ($phpAV[2]);
     $tipo= test_input($phpAV[3]);
     $eta_min= ($phpAV[4]);

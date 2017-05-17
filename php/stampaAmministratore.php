@@ -4,7 +4,7 @@ function stampaEventoAmministratore($conn) {
     // QUERY SELECT TABELLA EVENTO
 
     
-    $stmt = $conn->prepare("SELECT E.id, E.nome, E.durata, E.eta_min, E.eta_max, E.ticket, E.speciale_ragazzi, E.descrizione_ita, E.descrizione_eng, tE.id AS tipoNum, tE.nome AS tipo, E.foto FROM Evento AS E INNER JOIN tipologiaEvento AS tE ON e.tipologia=tE.id ORDER BY E.id");
+    $stmt = $conn->prepare("SELECT E.id, E.nome, E.durata, E.eta_min, E.eta_max, E.ticket, E.speciale_ragazzi, E.descrizione_ita, E.descrizione_eng, tE.id AS tipoNum, tE.nome AS tipo, E.foto FROM Evento AS E INNER JOIN tipologiaEvento AS tE ON E.tipologia=tE.id ORDER BY E.id");
     $stmt->execute();
     $stmt->bind_result($id, $evento, $durata, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $descrizione_ita, $descrizione_eng, $tipoNum, $tipo, $foto);
     
@@ -55,7 +55,7 @@ function stampaEventoAmministratore($conn) {
 
 function stampaLuogoAmministratore($conn) {
     // QUERY SELECT TABELLA Luogo
-    $stmt = $conn->prepare("SELECT * FROM Luogo AS L ORDER BY id");
+    $stmt = $conn->prepare("SELECT * FROM Luogo AS L ORDER BY L.lettera");
     $stmt->execute();
     $stmt->bind_result($id, $id_lettera, $colore, $nome, $latitudine, $longitudine, $citta, $tipo_via, $via, $numero_civico, $descrizione, $foto);
 
@@ -106,7 +106,7 @@ function stampaLuogoAmministratore($conn) {
 
 function stampaPersonaAmministratore($conn) {
         // QUERY SELECT TABELLA Persona
-    $stmt = $conn->prepare("SELECT P.id, P.nome, P.cognome, P.alt_name, P.titolo, P.tipologia, tP.nome, P.biografia, P.foto FROM Persona AS P INNER JOIN tipologiaPersona AS tP ON P.tipologia=tP.id ORDER BY P.id");
+    $stmt = $conn->prepare("SELECT P.id, P.nome, P.cognome, P.alt_name, P.titolo, P.tipologia, tP.nome, P.biografia, P.foto_mini FROM Persona AS P INNER JOIN tipologiaPersona AS tP ON P.tipologia=tP.id ORDER BY P.id");
     $stmt->execute();
     $stmt->bind_result($id, $nome, $cognome, $alt_name, $titolo, $id_tipologia, $nome_tipologia, $biografia, $foto);
     
