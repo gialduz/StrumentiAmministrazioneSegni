@@ -103,21 +103,6 @@
             </div>
         
             <div class="w3-third">
-                <label>Luogo</label>
-                <select id="addLuogo" name="selectLuogo" class="w3-select">
-                    <option value='0'> - </option>
-                    <?php 
-                    $stmt = $conn->prepare("SELECT id, lettera, nome FROM Luogo WHERE 1 ORDER BY lettera");
-                    $stmt->execute();
-                    $stmt->bind_result($id, $lettera, $nome);
-                    
-
-                    while($stmt->fetch()){
-                        echo "<option value=".$id.">". $lettera ." - " . $nome . "</option>";
-                    }
-                    $stmt->close();
-                    ?>
-                </select>
                 <label>Evento Speciale?</label>
                 <input id="addSpeciale" class="w3-check" type="checkbox">
                 <input id="addSubmit" type="button" value="Submit">
@@ -166,21 +151,6 @@
             </div>
 
             <div class="w3-third">
-                <label>Luogo</label>
-                <select id="editLuogo" name="selectLuogo" class="w3-select">
-                    <option value='0'> - </option>
-                    <?php 
-                    $stmt = $conn->prepare("SELECT id, lettera, nome FROM Luogo WHERE 1 ORDER BY lettera");
-                    $stmt->execute();
-                    $stmt->bind_result($id, $lettera, $nome);
-                    
-
-                    while($stmt->fetch()){
-                        echo "<option value=".$id.">". $lettera ." - " . $nome . "</option>";
-                    }
-                    $stmt->close();
-                    ?>
-                </select>
                 <label>Evento Speciale?</label>
                 <input id="editSpeciale" class="w3-check" type="checkbox">
                 <input id="editSubmit" type="button" value="Submit">
@@ -233,7 +203,7 @@
                     <option value='aggiungiRapporto'> [+] Aggiungi NUOVO RAPPORTO </option>
                     
                 </select>
-                <label>Nuovo tipoRapporto</label>
+                <label id="addTipoRapportoLabel">Nuovo tipoRapporto</label>
                 <input id="addTipoRapporto" class="w3-input" type="text">
             </div>
                

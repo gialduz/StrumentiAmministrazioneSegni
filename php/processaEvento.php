@@ -30,17 +30,33 @@
             <h3>Aggiungi evento</h3>
             <form id="addForm">
                 <div class="w3-row">
-                    <div class="w3-half">
+                    <div class="w3-twothird">
                         <div class="w3-half">
                             <label>Nome</label>
                             <input type="text" name="nome" value="" class="w3-input w3-border">
                         </div>
                         <div class="w3-half">
-                            <div class="w3-third">
+                            <div class="w3-half">
+                                <label>Luogo</label>
+                                <select id="addLuogo" name="selectLuogo" class="w3-select">
+                                    <option value='0'> - </option>
+                                    <?php 
+                                    $stmt = $conn->prepare("SELECT id, nome FROM Luogo WHERE 1");
+                                    $stmt->execute();
+                                    $stmt->bind_result($id, $nome);
+
+                                    while($stmt->fetch()){
+                                        echo "<option value=".$id.">" .$nome. "</option>";
+                                    }
+                                    $stmt->close();
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="w3-quarter">
                                 <label>Durata</label>
                                 <input type="number" name="durata" value="" class="w3-input w3-border">
                             </div>
-                            <div class="w3-twothird">
+                            <div class="w3-quarter">
                                 <label>Tipo</label>
                                 <!--<input type="text" name="tipologia" value="" class="w3-input w3-border uppato">-->
                                 <select id="addTipo" name="selectTipo" class="w3-select">
@@ -62,7 +78,7 @@
                         </div>
                     </div>
                 
-                    <div class="w3-half">
+                    <div class="w3-third">
                         <div class="w3-half">
                             <div class="w3-half">
                                 <label>Eta' MIN</label>
@@ -91,10 +107,6 @@
                         <label>Descrizione ITA</label>
                         <textarea id="descrizione_ita" rows="4" cols="50"></textarea>
                     </div>
-                    <div class="w3-half w3-center">
-                        <label>Descrizione ENG</label>
-                        <textarea id="descrizione_eng" rows="4" cols="50"></textarea>
-                    </div>
                 </div>
                 
             <input id="addSubmit" class="w3-button w3-right" type="button" value="Submit">
@@ -113,9 +125,25 @@
                             <input type="number" name="daAggiornare" id="idEdit" readonly="true" class="w3-input w3-border">
                         </div>
                         <div class="w3-col m10">
-                            <div class="w3-threequarter">
+                            <div class="w3-half">
                                 <label>Nome</label>
                                 <input type="text" name="nome" id="nomeEdit" class="w3-input w3-border">
+                            </div>
+                            <div class="w3-quarter">
+                                <label>Luogo</label>
+                                <select id="luogoEdit" name="luogoEdit" class="w3-select">
+                                    <option value='0'> - </option>
+                                    <?php 
+                                    $stmt = $conn->prepare("SELECT id, nome FROM Luogo WHERE 1");
+                                    $stmt->execute();
+                                    $stmt->bind_result($id, $nome);
+
+                                    while($stmt->fetch()){
+                                        echo "<option value=".$id.">" .$nome. "</option>";
+                                    }
+                                    $stmt->close();
+                                    ?>
+                                </select>
                             </div>
                             <div class="w3-quarter">
                                 <label>Durata</label>
@@ -173,10 +201,6 @@
                         <div class="w3-half w3-center">
                             <label>Descrizione ITA</label>
                             <textarea id="descrizione_itaE" rows="4" cols="50"></textarea>
-                        </div>
-                        <div class="w3-half w3-center">
-                            <label>Descrizione ENG</label>
-                            <textarea id="descrizione_engE" rows="4" cols="50"></textarea>
                         </div>
                     </div>
                     

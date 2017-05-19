@@ -25,15 +25,18 @@ $('.editBtn').click(function () {
     row = $(this).closest('tr').index();
     $("#idEdit").val(parseInt(arrayTabella[row][0]));
     $("#nomeEdit").val(arrayTabella[row][1]);
-    $("#durataEdit").val(parseInt(arrayTabella[row][2]));
-    var tipoId = arrayTabella[row][3].split('#')[1];//[1] alla fine perche crea un array con le 2 parti.. io tengo la seconda
+    
+    var luogoId = arrayTabella[row][2].split('#')[1];
+    $("#luogoEdit").val(luogoId);
+    
+    $("#durataEdit").val(parseInt(arrayTabella[row][3]));
+    var tipoId = arrayTabella[row][4].split('#')[1];//[1] alla fine perche crea un array con le 2 parti.. io tengo la seconda
     $('#tipoEdit').val(tipoId);
-    $("#minEdit").val(parseInt(arrayTabella[row][4]));
-    $('#maxEdit').val(parseInt(arrayTabella[row][5]));
-    $('#ticketEdit').val(parseInt(arrayTabella[row][6]));
-    $('#stEdit').val(parseInt(arrayTabella[row][7]));
-    $("#descrizione_itaE").val(arrayTabella[row][8]);
-    $("#descrizione_engE").val(arrayTabella[row][9]);
+    $("#minEdit").val(parseInt(arrayTabella[row][5]));
+    $('#maxEdit').val(parseInt(arrayTabella[row][6]));
+    $('#ticketEdit').val(parseInt(arrayTabella[row][7]));
+    $('#stEdit').val(parseInt(arrayTabella[row][8]));
+    $("#descrizione_itaE").val(arrayTabella[row][9]);
     
     $("#editBox").show(500);
 
@@ -60,7 +63,7 @@ $('#editSubmit').click(function () {
         $.ajax({
             type: "POST",
             url: "../php/eventoUpdate.php",
-            data: { arrayValue: arrayValue, dITA: $("#descrizione_itaE").val(), dENG: $("#descrizione_engE").val() }
+            data: { arrayValue: arrayValue, dITA: $("#descrizione_itaE").val() }
         }).done(function() {
              //ricarica AJAX
             location.reload();

@@ -3,7 +3,7 @@
     require 'connessione.php';// richiamo lo script responsabile della connessione a MySQL
 
 
-    $idLuogo = $_POST[idLuogo];
+    //$idLuogo = $_POST[idLuogo];
     $idEvento = $_POST[idEvento];
 
     $data = '2017-'.$_POST[mese].'-'.$_POST[giorno];
@@ -11,9 +11,9 @@
     $data_ora = $data." ".$orario;
     $speciale = $_POST["speciale"];
 
-    $stmt = $conn->prepare("INSERT INTO eventoLuogoData VALUES (NULL, ?, ?, ?, ?, '', ?, ?);");
+    $stmt = $conn->prepare("INSERT INTO eventoLuogoData VALUES (NULL, ?, '1', ?, ?, '', ?, ?);");
 
-    $stmt->bind_param("iisssi", $idEvento, $idLuogo, $data, $orario, $data_ora, $speciale);
+    $stmt->bind_param("isssi", $idEvento, $data, $orario, $data_ora, $speciale);
     $stmt->execute();
     $stmt->close();
 ?>

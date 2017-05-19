@@ -11,18 +11,18 @@
     $phpAV = $_POST["arrayValue"];
 
     $nome= test_input($phpAV[0]);
-    $durata = $phpAV[1];
-    $tipo = $phpAV[2];
-    $eta_min = $phpAV[3];
-    $eta_max = $phpAV[4];
-    $ticket = $phpAV[5];
-    $speciale_ragazzi = $phpAV[6];
+    $luogo = $phpAV[1];
+    $durata = $phpAV[2];
+    $tipo = $phpAV[3];
+    $eta_min = $phpAV[4];
+    $eta_max = $phpAV[5];
+    $ticket = $phpAV[6];
+    $speciale_ragazzi = $phpAV[7];
     $descrizione_ita = $_POST["dITA"];
-    $descrizione_eng = $_POST["dENG"];
 
-    $stmt = $conn->prepare("INSERT INTO Evento (id, nome, durata, tipologia, eta_min, eta_max, ticket, speciale_ragazzi, descrizione_ita, descrizione_eng)
+    $stmt = $conn->prepare("INSERT INTO Evento (id, nome, luogo, durata, tipologia, eta_min, eta_max, ticket, speciale_ragazzi, descrizione_ita)
     VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("siiiiiiss", $nome, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $descrizione_ita, $descrizione_eng);
+    $stmt->bind_param("siiiiiiis", $nome, $luogo, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $descrizione_ita);
     $stmt->execute();
     $stmt->close();
 ?>

@@ -45,7 +45,6 @@
      var popupVerifica = confirm("Vuoi davvero MODIFICARE questa data ?");
      if (popupVerifica == true) {
          //id_istanza viene creato prima? ->si
-         var idLuogo = $("#editLuogo").val();
          var giorno = $("#editGiorno").val();
          var mese = $("#editMese").val();
          var orario = $("#editOra").val();
@@ -59,7 +58,6 @@
              , url: "dettagliEldUpdate.php"
              , data: {
                  idIstanza: id_istanza
-                 , idLuogo: idLuogo
                  , giorno: giorno
                  , mese: mese
                  , orario: orario

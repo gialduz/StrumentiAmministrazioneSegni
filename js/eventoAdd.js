@@ -16,15 +16,13 @@ $('#addSubmit').click(function () {
     
     
     var descrizione_ita= $("#descrizione_ita").val();
-    var descrizione_eng= $("#descrizione_eng").val();
-    alert(descrizione_ita);
     var popupVerifica = confirm("Vuoi davvero AGGIUNGERE l'evento: " + arrayValue[0] + "?");
     
     if (popupVerifica == true) {
         $.ajax({
             type: "POST",
             url: "../php/eventoAdd.php",
-            data: { arrayValue: arrayValue, dITA: descrizione_ita, dENG: descrizione_eng }
+            data: { arrayValue: arrayValue, dITA: descrizione_ita }
         }).done(function() {
              //ricarica AJAX
             location.reload();

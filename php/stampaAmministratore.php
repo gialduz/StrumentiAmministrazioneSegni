@@ -4,14 +4,15 @@ function stampaEventoAmministratore($conn) {
     // QUERY SELECT TABELLA EVENTO
 
     
-    $stmt = $conn->prepare("SELECT E.id, E.nome, E.durata, E.eta_min, E.eta_max, E.ticket, E.speciale_ragazzi, E.descrizione_ita, E.descrizione_eng, tE.id AS tipoNum, tE.nome AS tipo, E.foto FROM Evento AS E INNER JOIN tipologiaEvento AS tE ON E.tipologia=tE.id ORDER BY E.id");
+    $stmt = $conn->prepare("SELECT E.id, E.nome, L.id, L.nome, E.durata, E.eta_min, E.eta_max, E.ticket, E.speciale_ragazzi, E.descrizione_ita, tE.id AS tipoNum, tE.nome AS tipo, E.foto FROM ((Evento AS E INNER JOIN tipologiaEvento AS tE ON E.tipologia=tE.id) INNER JOIN Luogo AS L ON E.luogo=L.id) ORDER BY E.id");
     $stmt->execute();
-    $stmt->bind_result($id, $evento, $durata, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $descrizione_ita, $descrizione_eng, $tipoNum, $tipo, $foto);
+    $stmt->bind_result($id, $evento, $id_luogo, $nome_luogo, $durata, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $descrizione_ita, $tipoNum, $tipo, $foto);
     
 
     $daRitornare="<table id='tabellaEventi' style='width:100%' cellspacing='0'>
                 <th>id</th>
                 <th>nome</th>
+                <th>luogo</th>
                 <th>durata</th>
                 <th>tipologia</th>
                 <th>eta_min</th>
@@ -19,7 +20,6 @@ function stampaEventoAmministratore($conn) {
                 <th>ticket</th>
                 <th>s_ragazzi</th>
                 <th>ITA</th>
-                <th>ENG</th>
                 <th>foto</th>             
                 
                 <th>Edit</th>
@@ -32,14 +32,15 @@ function stampaEventoAmministratore($conn) {
         
         $daRitornare.= "<tr class='nr'>"
             ."<td>" . $id. "</td><td>" . $evento. "</td><td>" 
+           // . $luogo. "</td><td>"
+            . $nome_luogo.  "<p hidden class='idLuogo'>#".$id_luogo."</p>" ."</td><td>" 
             . $durata. "</td><td class='uppato'>" 
             . $tipo.  "<p hidden class='idTipo'>#".$tipoNum."</p>" ."</td><td>" 
             . $eta_min."</td><td>" 
             . $eta_max. "</td><td>" 
             . $ticket. "</td><td>" 
             . $speciale_ragazzi. "</td><td><p class='testoTagliato'>" 
-            . $descrizione_ita. "</p></td><td><p class='testoTagliato'>"
-            . $descrizione_eng. "</p></td>"
+            . $descrizione_ita. "</p></td>"
             ."<td><a href='processaFotoEvento.php?id=".$id."'>". $foto.  "</a></td>"
             ."<td><a href='#' onClick='return false;'><img src='../img/edit_icon.png' style='max-width:25px' class='resp editBtn'></a></td>" 
             ."<td><a href='#' onClick='return false;'><img src='../img/cancel_icon.png' style='max-width:25px' class='resp delBtn'></a></td>" 

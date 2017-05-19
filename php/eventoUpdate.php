@@ -12,15 +12,16 @@
 
     $id= $phpAV[0];
     $nome= test_input($phpAV[1]);
-    $durata= ($phpAV[2]);
-    $tipo= test_input($phpAV[3]);
-    $eta_min= ($phpAV[4]);
-    $eta_max= ($phpAV[5]);
-    $ticket= ($phpAV[6]);
-    $speciale_ragazzi= $phpAV[7];
+    $luogo= $phpAV[2];
+    $durata= ($phpAV[3]);
+    $tipo= test_input($phpAV[4]);
+    $eta_min= ($phpAV[5]);
+    $eta_max= ($phpAV[6]);
+    $ticket= ($phpAV[7]);
+    $speciale_ragazzi= $phpAV[8];
 
-    $stmt = $conn->prepare("UPDATE Evento SET nome= ?, durata= ?, tipologia= ?, eta_min= ?, eta_max= ?, ticket= ?, speciale_ragazzi= ?, descrizione_ita= ?, descrizione_eng= ? WHERE id= ?");
-    $stmt->bind_param("siiiiiissi", $nome, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $_POST["dITA"], $_POST["dENG"], $id);
+    $stmt = $conn->prepare("UPDATE Evento SET nome= ?, luogo= ?, durata= ?, tipologia= ?, eta_min= ?, eta_max= ?, ticket= ?, speciale_ragazzi= ?, descrizione_ita= ? WHERE id= ?");
+    $stmt->bind_param("siiiiiiisi", $nome, $luogo, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $_POST["dITA"], $id);
     $stmt->execute();
     $stmt->close();
 ?>

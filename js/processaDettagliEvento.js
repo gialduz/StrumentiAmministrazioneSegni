@@ -10,7 +10,6 @@ $(document).ready(function () {
         var popupVerifica = confirm("Vuoi davvero AGGIUNGERE questa data ?");
         if (popupVerifica == true) {
             var idEvento = $("#selectEvento").val();
-            var idLuogo = $("#addLuogo").val();
             var giorno = $("#addGiorno").val();
             var mese = $("#addMese").val();
             var ora = $("#addOra").val();
@@ -23,8 +22,7 @@ $(document).ready(function () {
                 type: "POST"
                 , url: "../php/dettagliEldAdd.php"
                 , data: {
-                    idLuogo: idLuogo
-                    , idEvento: idEvento
+                    idEvento: idEvento
                     , giorno: giorno
                     , mese: mese
                     , ora: ora
@@ -105,9 +103,13 @@ $(document).ready(function () {
     
     
     //Mostra e nasconde input aggiunta nuova categoria
-    if($("#addRapportoEP").val()!='aggiungiRapporto') {$("#addTipoRapporto").hide();} //CAMPO AGGIUNTIVO addTipoRapporto
+    if($("#addRapportoEP").val()!='aggiungiRapporto') {$("#addTipoRapporto").hide(); $("#addTipoRapportoLabel").hide();} //CAMPO AGGIUNTIVO addTipoRapporto
     $("#addRapportoEP").change(function() {
-            if($("#addRapportoEP").val() == 'aggiungiRapporto'){$("#addTipoRapporto").show();}else{$("#addTipoRapporto").hide();}
+            if($("#addRapportoEP").val() == 'aggiungiRapporto'){
+                $("#addTipoRapporto").show(); $("#addTipoRapportoLabel").show();
+            }else{
+                $("#addTipoRapporto").hide();
+                $("#addTipoRapportoLabel").hide();}
         });
     
     
