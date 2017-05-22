@@ -105,6 +105,10 @@
             <div class="w3-third">
                 <label>Evento Speciale?</label>
                 <input id="addSpeciale" class="w3-check" type="checkbox">
+                
+                <label>Esaurito?</label>
+                <input id="addEsaurito" class="w3-check" type="checkbox">
+                
                 <input id="addSubmit" type="button" value="Submit">
             </div>
 
@@ -153,6 +157,10 @@
             <div class="w3-third">
                 <label>Evento Speciale?</label>
                 <input id="editSpeciale" class="w3-check" type="checkbox">
+                
+                <label>Esaurito?</label>
+                <input id="editEsaurito" class="w3-check" type="checkbox">
+                
                 <input id="editSubmit" type="button" value="Submit">
             </div>
         </div>

@@ -30,7 +30,7 @@
             <h3>Aggiungi evento</h3>
             <form id="addForm">
                 <div class="w3-row">
-                    <div class="w3-twothird">
+                    <div class="w3-half">
                         <div class="w3-half">
                             <label>Nome</label>
                             <input type="text" name="nome" value="" class="w3-input w3-border">
@@ -78,25 +78,33 @@
                         </div>
                     </div>
                 
-                    <div class="w3-third">
+                    <div class="w3-half">
                         <div class="w3-half">
                             <div class="w3-half">
                                 <label>Eta' MIN</label>
-                                <input type="number" name="eta_min" value="0" style="width: 5em;" class="w3-input w3-border">
+                                <input type="number" name="eta_min" value="0" class="w3-input w3-border">
                             </div>
                             <div class="w3-half">
                                 <label>Eta' MAX</label>
-                                <input type="number" name="eta_max" value="0" style="width: 5em;" class="w3-input w3-border">
+                                <input type="number" name="eta_max" value="0" class="w3-input w3-border">
                             </div>
                         </div>
                         <div class="w3-half">
-                            <div class="w3-half">
+                            <div class="w3-quarter">
                                 <label>Ticket</label>
-                                <input type="number" value="0" min="0" max="1" name="ticket" style="width: 3em;" class="w3-input w3-border">
+                                <input type="number" value="0" min="0" max="1" name="ticket" class="w3-input w3-border">
                             </div>
-                            <div class="w3-half">
-                                <label>Spec_ragazzi</label>
-                                <input type="number" value="0" min="0" max="1" name="speciale_ragazzi" style="width: 3em;" class="w3-input w3-border">
+                            <div class="w3-quarter">
+                                <label>sTeen</label>
+                                <input type="number" value="0" min="0" max="1" name="speciale_ragazzi" class="w3-input w3-border">
+                            </div>
+                            <div class="w3-quarter">
+                                <label>famiglie</label>
+                                <input type="number" value="0" min="0" max="1" name="famiglia" class="w3-input w3-border">
+                            </div>
+                            <div class="w3-quarter">
+                                <label>scuole</label>
+                                <input type="number" value="0" min="0" max="1" name="scuola" class="w3-input w3-border">
                             </div>
                         </div>
                     </div>
@@ -121,15 +129,14 @@
                 <div class="w3-row">
                     <div class="w3-half">
                         <div class="w3-col s2">
-                            <label>Id</label>
-                            <input type="number" name="daAggiornare" id="idEdit" readonly="true" class="w3-input w3-border">
+                            <input type="hidden" name="daAggiornare" id="idEdit" readonly="true" class="w3-input w3-border">
                         </div>
-                        <div class="w3-col m10">
-                            <div class="w3-half">
+                        <div class="w3-col">
+                            <div class="w3-third">
                                 <label>Nome</label>
                                 <input type="text" name="nome" id="nomeEdit" class="w3-input w3-border">
                             </div>
-                            <div class="w3-quarter">
+                            <div class="w3-third">
                                 <label>Luogo</label>
                                 <select id="luogoEdit" name="luogoEdit" class="w3-select">
                                     <option value='0'> - </option>
@@ -145,7 +152,7 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="w3-quarter">
+                            <div class="w3-third">
                                 <label>Durata</label>
                                 <input type="number" name="durata" id="durataEdit" class="w3-input w3-border">
                             </div>
@@ -182,14 +189,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w3-quarter">
-                            <div class="w3-half">
+                        <div class="w3-half">
+                            <div class="w3-quarter">
                                 <label>Ticket</label>
                                 <input type="number" min="0" max="1" name="ticket" id="ticketEdit" class="w3-input w3-border">
                             </div>
-                            <div class="w3-half">
-                                <label>Sp_ragazzi</label>
+                            <div class="w3-quarter">
+                                <label>sTeen</label>
                                 <input type="number" min="0" max="1" name="speciale_ragazzi" id="stEdit" class="w3-input w3-border">
+                            </div>
+                            <div class="w3-quarter">
+                                <label>famiglie</label>
+                                <input type="number" value="0" min="0" max="1" name="famiglia" id="famigliaEdit" class="w3-input w3-border">
+                            </div>
+                            <div class="w3-quarter">
+                                <label>scuole</label>
+                                <input type="number" value="0" min="0" max="1" name="scuola" id="scuolaEdit" class="w3-input w3-border">
                             </div>
                         <!--descrizioneIta: <input type="text" name="descrizione_ita"><br>
                         descrizioneEng: <input type="text" name="descrizione_eng"><br>-->
@@ -225,7 +240,7 @@
     $conn->close();
     ?>
     
-    <div id="spazioPerFixedUPD" class="w3-center" style="height:250px">Fine</div>
+    <div id="spazioPerFixedUPD" class="w3-center" style="height:350px">Fine</div>
 
     
     <script src="../js/eventoDelete.js"></script>

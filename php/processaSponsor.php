@@ -22,7 +22,7 @@
     
     <div class="w3-row">
         <a href="../amministrazione.html"><div class="w3-quarter w3-center w3-xxlarge w3-blue w3-hover-cyan "><i class="fa fa-home fa-2x"></i> Home</div></a>
-        <div class="w3-threequarter w3-center w3-xxlarge w3-orange w3-text-white"><i class="fa fa-male fa-2x"></i> PERSONE</div>
+        <div class="w3-threequarter w3-center w3-xxlarge w3-deep-orange w3-text-white"><i class="fa fa-money fa-2x"></i> SPONSOR</div>
     </div> 
     
     
@@ -33,12 +33,12 @@
                 <div class="w3-row">
                     <div class="w3-half">
                         <div class="w3-third">
-                            <label class="soloFormPersona">Nome</label>
-                            <input type="text" name="nome" value="" class="w3-input w3-border soloFormPersona">
+                            <!--<label>Nome</label>-->
+                            <input type="hidden" name="nome" value="" class="w3-input w3-border">
                         </div>
                         <div class="w3-third">
-                            <label class="soloFormPersona">Cognome</label>
-                            <input type="text" name="cognome" value="" class="w3-input w3-border soloFormPersona">
+                            <!--<label>Cognome</label>-->
+                            <input type="hidden" name="cognome" value="" class="w3-input w3-border">
                         </div>
                         <div class="w3-third">
                             <label>ALT_NAME</label>
@@ -47,15 +47,15 @@
                     </div>
                     <div class="w3-half">
                         <div class="w3-twothird">
-                            <label class="soloFormPersona">Titolo</label>
-                            <input type="text" name="titolo" value="" class="w3-input w3-border soloFormPersona">
+                            <!--<label>Titolo</label>-->
+                            <input type="hidden" name="titolo" value="" class="w3-input w3-border">
                         </div>
                         <div class="w3-third">
                             <label>Tipologia</label>
                             <select id="addTipo" name="selectTipo" class="w3-select">
                                 <option value='0'> - </option>
                                 <?php 
-                                $stmt = $conn->prepare("SELECT id, nome FROM tipologiaPersona WHERE (id = 1 || id = 2)");
+                                $stmt = $conn->prepare("SELECT id, nome FROM tipologiaPersona WHERE (id = 3 || id = 4 || id = 5 || id = 6)");
                                 $stmt->execute();
                                 $stmt->bind_result($id, $nome);
 
@@ -97,12 +97,12 @@
                 <div class="w3-rest">
                     <div class="w3-half">
                         <div class="w3-third">
-                            <label class="soloFormPersona">Nome</label>
-                            <input id="editNome" type="text" name="nome" value="" class="w3-input w3-border soloFormPersona">
+                            <!--<label>Nome</label>-->
+                            <input id="editNome" type="hidden" name="nome" value="" class="w3-input w3-border">
                         </div>
                         <div class="w3-third">
-                            <label class="soloFormPersona">Cognome</label>
-                            <input id="editCognome" type="text" name="cognome" value="" class="w3-input w3-border soloFormPersona">
+                            <!--<label>Cognome</label>-->
+                            <input id="editCognome" type="hidden" name="cognome" value="" class="w3-input w3-border">
                         </div>
                         <div class="w3-third">
                             <label>ALT_NAME</label>
@@ -111,15 +111,15 @@
                     </div>
                     <div class="w3-half">
                         <div class="w3-twothird">
-                            <label class="soloFormPersona">Titolo</label>
-                            <input id="editTitolo" type="text" name="titolo" value="" class="w3-input w3-border soloFormPersona">
+                            <!--<label>Titolo</label>-->
+                            <input id="editTitolo" type="hidden" name="titolo" value="" class="w3-input w3-border">
                         </div>
                         <div class="w3-third">
                             <label>Tipologia</label>
                             <select id="editTipo" name="selectTipo" class="w3-select">
                                 <option value='0'> - </option>
                                 <?php 
-                                $sql = "SELECT id, nome FROM tipologiaPersona WHERE (id = 1 || id = 2)";
+                                $sql = "SELECT id, nome FROM tipologiaPersona WHERE (id = 3 || id = 4 || id = 5 || id = 6)";
                                 $result = $conn->query($sql);   
                                 while($row = $result->fetch_assoc()){
                                 echo "<option value='".$row["id"]."'>" . $row['nome'] . "</option>";
@@ -152,7 +152,7 @@
     <?php
     
     include 'stampaAmministratore.php';
-    echo stampaPersonaAmministratore($conn);
+    echo stampaSponsorAmministratore($conn);
     ?>
     
     <div id="spazioPerFixedUPD" class="w3-center" style="height:200px">Fine</div>
@@ -165,14 +165,16 @@
     <script>
         //PREpendo filtro persona/sponsor/etc..
         var filtroPersona= "<div class='w3-grey w3-row w3-padding'>"+
-                                "<div id='btnArtisti' class='w3-col s4 w3-button w3-orange' onClick='filtraTipoPersona(1);'>Artisti</div>"+
-                                "<div class='w3-col s4 w3-button w3-purple' onClick='filtraTipoPersona(2);'>Compagnie</div>"+
+                                "<div id='btnProduzione' class='w3-col s2 w3-button w3-blue' onClick='filtraTipoPersona(3);'>Produzione</div>"+
+                                "<div id='btnSponsor' class='w3-col s2 w3-button w3-green' onClick='filtraTipoPersona(4);'>Sponsor</div>"+
+                                "<div id='btnSponsor' class='w3-col s2 w3-button w3-orange' onClick='filtraTipoPersona(5);'>Patrocinio</div>"+
+                                "<div id='btnSponsor' class='w3-col s2 w3-button w3-purple' onClick='filtraTipoPersona(6);'>Altro</div>"+
+                                "<div class='w3-col s2 w3-button w3-black w3-right' onClick='rimuoviFiltroTipoPersona();'>[TUTTO]</div>"+
                             "</div>"
         $("#tabellaPersona").before(filtroPersona);
         function filtraTipoPersona(tipo){
             $(".rigaTabella").hide();
             $(".rigaTipo"+tipo).show();
-            if(tipo == 2) {$(".soloFormPersona").hide();} else {$(".soloFormPersona").show();}
             $("#addTipo").val(tipo); //scelgo categoria cliccata
         }
         function rimuoviFiltroTipoPersona(){
@@ -183,7 +185,7 @@
         
         
         //FINGO CLICK ARTISTI
-        $( "#btnArtisti" ).trigger( "click" );
+        $( "#btnProduzione" ).trigger( "click" );
     </script>
     
     <script src="../js/personaAdd.js"></script>

@@ -18,6 +18,10 @@ $(document).ready(function () {
             if ($('#addSpeciale').is(":checked")) {
                 speciale = 1;
             }
+            var esaurito = 0;
+            if ($('#addEsaurito').is(":checked")) {
+                esaurito = 1;
+            }
             $.ajax({
                 type: "POST"
                 , url: "../php/dettagliEldAdd.php"
@@ -28,6 +32,7 @@ $(document).ready(function () {
                     , ora: ora
                     , minuto: minuto
                     , speciale: speciale
+                    , esaurito: esaurito
                 }
             }).done(function () {
                 //ricarica AJAX

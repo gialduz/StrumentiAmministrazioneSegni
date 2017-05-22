@@ -17,7 +17,7 @@ $('#addSubmit').click(function () {
     
     var descrizione_ita= $("#descrizione_ita").val();
     var popupVerifica = confirm("Vuoi davvero AGGIUNGERE l'evento: " + arrayValue[0] + "?");
-    
+
     if (popupVerifica == true) {
         $.ajax({
             type: "POST",

@@ -36,7 +36,9 @@ $('.editBtn').click(function () {
     $('#maxEdit').val(parseInt(arrayTabella[row][6]));
     $('#ticketEdit').val(parseInt(arrayTabella[row][7]));
     $('#stEdit').val(parseInt(arrayTabella[row][8]));
-    $("#descrizione_itaE").val(arrayTabella[row][9]);
+    $('#famigliaEdit').val(parseInt(arrayTabella[row][9]));
+    $('#scuolaEdit').val(parseInt(arrayTabella[row][10]));
+    $("#descrizione_itaE").val(arrayTabella[row][11]);
     
     $("#editBox").show(500);
 

@@ -33,6 +33,10 @@
      if (speciale[id_istanza] == 1) {
          $('#editSpeciale').prop('checked', true);
      }
+     $('#editEsaurito').prop('checked', false);
+     if (arrayEsaurito[id_istanza] == 1) {
+         $('#editEsaurito').prop('checked', true);
+     }
      openTabModalita('editTab');
      if (primaEsec != 0) {
          rigaVecchia.removeClass("w3-yellow");
@@ -53,6 +57,10 @@
          if ($('#editSpeciale').is(":checked")) {
              speciale = 1;
          }
+         var esaurito = 0;
+         if ($('#editEsaurito').is(":checked")) {
+             esaurito = 1;
+         }
          $.ajax({
              type: "POST"
              , url: "dettagliEldUpdate.php"
@@ -63,6 +71,7 @@
                  , orario: orario
                  , minuto: minuto
                  , speciale: speciale
+                 , esaurito: esaurito
              }
          }).done(function () {
              //ricarica AJAX

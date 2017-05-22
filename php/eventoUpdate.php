@@ -19,9 +19,11 @@
     $eta_max= ($phpAV[6]);
     $ticket= ($phpAV[7]);
     $speciale_ragazzi= $phpAV[8];
+    $famiglia= $phpAV[9];
+    $scuola= $phpAV[10];
 
-    $stmt = $conn->prepare("UPDATE Evento SET nome= ?, luogo= ?, durata= ?, tipologia= ?, eta_min= ?, eta_max= ?, ticket= ?, speciale_ragazzi= ?, descrizione_ita= ? WHERE id= ?");
-    $stmt->bind_param("siiiiiiisi", $nome, $luogo, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $_POST["dITA"], $id);
+    $stmt = $conn->prepare("UPDATE Evento SET nome= ?, luogo= ?, durata= ?, tipologia= ?, eta_min= ?, eta_max= ?, ticket= ?, speciale_ragazzi= ?, famiglia= ?, scuola= ?, descrizione_ita= ? WHERE id= ?");
+    $stmt->bind_param("siiiiiiiiisi", $nome, $luogo, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $famiglia, $scuola, $_POST["dITA"], $id);
     $stmt->execute();
     $stmt->close();
 ?>

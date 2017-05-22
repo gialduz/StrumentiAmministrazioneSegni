@@ -18,11 +18,13 @@
     $eta_max = $phpAV[5];
     $ticket = $phpAV[6];
     $speciale_ragazzi = $phpAV[7];
+    $famiglia = $phpAV[8];
+    $scuola = $phpAV[9];
     $descrizione_ita = $_POST["dITA"];
 
-    $stmt = $conn->prepare("INSERT INTO Evento (id, nome, luogo, durata, tipologia, eta_min, eta_max, ticket, speciale_ragazzi, descrizione_ita)
-    VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("siiiiiiis", $nome, $luogo, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $descrizione_ita);
+    $stmt = $conn->prepare("INSERT INTO Evento (id, nome, luogo, durata, tipologia, eta_min, eta_max, ticket, speciale_ragazzi, famiglia, scuola, descrizione_ita)
+    VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("siiiiiiiiis", $nome, $luogo, $durata, $tipo, $eta_min, $eta_max, $ticket, $speciale_ragazzi, $famiglia, $scuola, $descrizione_ita);
     $stmt->execute();
     $stmt->close();
 ?>
