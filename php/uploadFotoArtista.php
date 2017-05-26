@@ -3,6 +3,8 @@
 $id_artista= $_POST["idArtista"];
 $url_attuale= $_POST["urlAttuale"];
 $url_attuale_mini= $_POST["urlAttualeMini"];
+$tipologia= $_POST["tipologia"];
+
 
 //GESTIONE UPLOAD FOTO ARTISTA
 
@@ -128,7 +130,7 @@ if ($uploadOk == 0) {
         
         
         
-        header("location: processaFotoArtista.php?id=".$id_artista);
+        header("location: processaFotoArtista.php?id=".$id_artista."&tipologia=".$tipologia);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

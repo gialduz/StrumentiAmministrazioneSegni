@@ -25,8 +25,8 @@
         <div class="w3-threequarter w3-center w3-xxlarge w3-purple"><i class="fa fa-table fa-2x"></i> EVENTI</div>
     </div>  
     
-    <div id="addBox">
-        <div class="w3-yellow w3-row">
+    <div id="addBox" class="padded10 w3-green">
+        <div class="w3-row">
             <h3>Aggiungi evento</h3>
             <form id="addForm">
                 <div class="w3-row">
@@ -122,8 +122,8 @@
         </div>
     </div>
 
-    <div id='editBox'>
-        <div class="w3-row w3-cyan">
+    <div id='editBox' class="padded10 w3-yellow" style="width:85.2%;">
+        <div class="w3-row">
             <h3>Modifica evento</h3>
             <form id="editForm">
                 <div class="w3-row">

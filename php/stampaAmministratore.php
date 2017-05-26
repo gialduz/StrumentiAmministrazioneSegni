@@ -111,9 +111,9 @@ function stampaLuogoAmministratore($conn) {
 
 function stampaPersonaAmministratore($conn) {
         // QUERY SELECT TABELLA Persona
-    $stmt = $conn->prepare("SELECT P.id, P.nome, P.cognome, P.alt_name, P.titolo, P.tipologia, tP.nome, P.biografia, P.foto_mini FROM Persona AS P INNER JOIN tipologiaPersona AS tP ON P.tipologia=tP.id WHERE (tP.id = 1 || tP.id = 2) ORDER BY P.id");
+    $stmt = $conn->prepare("SELECT P.id, P.nome, P.cognome, P.alt_name, P.titolo, P.tipologia, tP.nome, P.biografia, P.foto_mini, P.link FROM Persona AS P INNER JOIN tipologiaPersona AS tP ON P.tipologia=tP.id WHERE (tP.id = 1 || tP.id = 2) ORDER BY P.id");
     $stmt->execute();
-    $stmt->bind_result($id, $nome, $cognome, $alt_name, $titolo, $id_tipologia, $nome_tipologia, $biografia, $foto);
+    $stmt->bind_result($id, $nome, $cognome, $alt_name, $titolo, $id_tipologia, $nome_tipologia, $biografia, $foto, $link);
     
 
     
@@ -126,6 +126,7 @@ function stampaPersonaAmministratore($conn) {
                     <th class='soloFormPersona'>titolo</th>
                     <th>tipologia</th>
                     <th>biografia</th>
+                    <th>link</th>
                     <th>foto</th>
 
                     <th>Edit</th>
@@ -136,7 +137,7 @@ function stampaPersonaAmministratore($conn) {
             $foto='<div class="imgQuadrataArtista" style="background-image: url('.$foto.');">'; 
         }else{$foto='NO';}
         
-        $daRitornare.= "<tr class='rigaTabella rigaTipo".$id_tipologia."'>"
+        $daRitornare.= "<tr id='".$id."' class='rigaTabella rigaTipo".$id_tipologia."'>"
             ."<td>" 
             . $id."</td><td class='soloFormPersona'>" 
             . $nome. "</td><td class='soloFormPersona'>" 
@@ -145,7 +146,8 @@ function stampaPersonaAmministratore($conn) {
             . $titolo.  "</td><td>"
             . $nome_tipologia.  "<p hidden class='idTipoPers'>#".$id_tipologia."</p>" ."</td><td><p class='testoTagliato'>" 
             . $biografia.  "</p> </td>"
-            ."<td><a href='processaFotoArtista.php?id=".$id."'><div>". $foto.  "</div></a></td>"
+            . "<td>".$link. "</td>" 
+            ."<td><a href='processaFotoArtista.php?id=".$id."&tipologia=".$id_tipologia."'><div>". $foto.  "</div></a></td>"
             ."<td><a href='#' onClick='return false;'><img src='../img/edit_icon.png' style='max-width:25px' class='resp editBtn'></a></td>" 
             ."<td><a href='#' onClick='return false;'><img src='../img/cancel_icon.png' style='max-width:25px' class='resp delBtn'></a></td>" 
             ."</tr>";
@@ -158,9 +160,9 @@ function stampaPersonaAmministratore($conn) {
 
 function stampaSponsorAmministratore($conn) {
         // QUERY SELECT TABELLA Persona
-    $stmt = $conn->prepare("SELECT P.id, P.nome, P.cognome, P.alt_name, P.titolo, P.tipologia, tP.nome, P.biografia, P.foto_mini FROM Persona AS P INNER JOIN tipologiaPersona AS tP ON P.tipologia=tP.id WHERE (tP.id = 3 || tP.id = 4 || tP.id = 5 || tP.id = 6) ORDER BY P.id");
+    $stmt = $conn->prepare("SELECT P.id, P.nome, P.cognome, P.alt_name, P.titolo, P.tipologia, tP.nome, P.biografia, P.foto_mini, P.link FROM Persona AS P INNER JOIN tipologiaPersona AS tP ON P.tipologia=tP.id WHERE (tP.id = 3 || tP.id = 4 || tP.id = 5 || tP.id = 6) ORDER BY P.id");
     $stmt->execute();
-    $stmt->bind_result($id, $nome, $cognome, $alt_name, $titolo, $id_tipologia, $nome_tipologia, $biografia, $foto);
+    $stmt->bind_result($id, $nome, $cognome, $alt_name, $titolo, $id_tipologia, $nome_tipologia, $biografia, $foto, $link);
     
 
     
@@ -172,7 +174,8 @@ function stampaSponsorAmministratore($conn) {
                     <th>alt_name</th>
                     <th hidden>titolo</th>
                     <th>tipologia</th>
-                    <th>biografia</th>
+                    <th hidden>biografia</th>
+                    <th>link</th>
                     <th>foto</th>
 
                     <th>Edit</th>
@@ -183,16 +186,17 @@ function stampaSponsorAmministratore($conn) {
             $foto='<div class="imgQuadrataArtista" style="background-image: url('.$foto.');">'; 
         }else{$foto='NO';}
         
-        $daRitornare.= "<tr class='rigaTabella rigaTipo".$id_tipologia."'>"
+        $daRitornare.= "<tr id='".$id."' class='rigaTabella rigaTipo".$id_tipologia."'>"
             ."<td>" 
             . $id."</td><td hidden>" 
             . $nome. "</td><td hidden>" 
             . $cognome. "</td><td>" 
             . $alt_name.  "</td><td hidden>"
             . $titolo.  "</td><td>"
-            . $nome_tipologia.  "<p hidden class='idTipoPers'>#".$id_tipologia."</p>" ."</td><td><p class='testoTagliato'>" 
+            . $nome_tipologia.  "<p hidden class='idTipoPers'>#".$id_tipologia."</p>" ."</td><td hidden><p class='testoTagliato'>" 
             . $biografia.  "</p> </td>"
-            ."<td><a href='processaFotoArtista.php?id=".$id."'><div>". $foto.  "</div></a></td>"
+            . "<td>".$link. "</td>" 
+            ."<td><a href='processaFotoArtista.php?id=".$id."&tipologia=".$id_tipologia."'><div>". $foto.  "</div></a></td>"
             ."<td><a href='#' onClick='return false;'><img src='../img/edit_icon.png' style='max-width:25px' class='resp editBtn'></a></td>" 
             ."<td><a href='#' onClick='return false;'><img src='../img/cancel_icon.png' style='max-width:25px' class='resp delBtn'></a></td>" 
             ."</tr>";

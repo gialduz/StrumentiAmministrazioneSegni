@@ -33,6 +33,8 @@ $('.editBtn').click(function () {
     var tipoIdPers = arrayTabella[row][5].split('#')[1];//[1] alla fine perche crea un array con le 2 parti.. io tengo la seconda
     $("#editTipo").val(tipoIdPers);
     $("#biografiaE").val(arrayTabella[row][6]);
+    $("#editLink").val(arrayTabella[row][7]);
+
     
     $("#editBox").show(500);
     
@@ -54,7 +56,7 @@ $('#editSubmit').click(function () {
         arrayValue[i]=formField.value;
     });
     
-    
+    //alert(arrayValue);
     if (popupVerifica == true) {
         $.ajax({
             type: "POST",

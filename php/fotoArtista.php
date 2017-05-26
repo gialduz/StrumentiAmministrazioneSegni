@@ -22,12 +22,12 @@ $id_artista= $_POST["idArtista"];
 
 include 'configurazione.php';
 include 'connessione.php';
-$sql=   "SELECT P.id, P.nome, P.cognome, P.alt_name, P.foto, P.foto_mini FROM Persona AS P WHERE P.id= ?";
+$sql=   "SELECT P.id, P.nome, P.cognome, P.alt_name, P.foto, P.foto_mini, P.tipologia FROM Persona AS P WHERE P.id= ?";
     
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_artista);
 $stmt->execute();
-$stmt->bind_result($id, $nome, $cognome, $alt_name, $foto, $foto_mini);        
+$stmt->bind_result($id, $nome, $cognome, $alt_name, $foto, $foto_mini, $tipologia);        
 $stmt->fetch();
 //HEADER
 $daRitornare= '<div class="w3-container w3-orange w3-text-white"><h2>'.$nome.' '.$cognome.' <small>'.$alt_name.'</small></h2></div>';
@@ -47,6 +47,7 @@ $daRitornare.= '
                 <input type="hidden" name="idArtista" id="idArtista" class="w3-button w3-white" value="'.$id_artista.'">
                 <input type="hidden" name="urlAttuale" id="urlAttuale" class="w3-button w3-white" value="'.$foto.'">
                 <input type="hidden" name="urlAttualeMini" id="urlAttualeMini" class="w3-button w3-white" value="'.$foto_mini.'">
+                <input type="hidden" name="tipologia" id="urlAttualeMini" class="w3-button w3-white" value="'.$tipologia.'">
             </form>
         </div>
     </div>

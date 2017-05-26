@@ -26,30 +26,23 @@
     </div> 
     
     
-    <div id="addBox">
-        <div class="w3-yellow w3-row">
-            <h3>Aggiungi Persona</h3>
+    <div id="addBox" class="padded10 w3-green">
+        <div class="w3-row">
+            <h3>Aggiungi</h3>
             <form id="addForm">
                 <div class="w3-row">
                     <div class="w3-half">
-                        <div class="w3-third">
                             <!--<label>Nome</label>-->
                             <input type="hidden" name="nome" value="" class="w3-input w3-border">
-                        </div>
-                        <div class="w3-third">
                             <!--<label>Cognome</label>-->
                             <input type="hidden" name="cognome" value="" class="w3-input w3-border">
-                        </div>
-                        <div class="w3-third">
-                            <label>ALT_NAME</label>
-                            <input type="text" name="alt_name" value="" class="w3-input w3-border">
-                        </div>
+                        
+                        <label>ALT_NAME</label>
+                        <input type="text" name="alt_name" value="" class="w3-input w3-border">
                     </div>
                     <div class="w3-half">
-                        <div class="w3-twothird">
                             <!--<label>Titolo</label>-->
                             <input type="hidden" name="titolo" value="" class="w3-input w3-border">
-                        </div>
                         <div class="w3-third">
                             <label>Tipologia</label>
                             <select id="addTipo" name="selectTipo" class="w3-select">
@@ -66,17 +59,24 @@
                                 ?>
                             </select>                        
                         </div>
+                        <div class="w3-twothird">
+                            <label>Link</label>
+                            <input type="text" id="addLink" name="addLink" value="" class="w3-input w3-border">
+                        </div>
                     </div>
                 </div>
                 <div class="w3-row">
+                    <!--
                     <div class="w3-threequarter w3-center">
                         <label>biografia</label>
                         <textarea id="biografia" rows="4" cols="50"></textarea>
                     </div>
+                    -->
+                    
                     
                 
-                    <div class="w3-quarter w3-center">
-                        <input id="addSubmit" class="w3-button" type="button" value="Submit">
+                    <div class="w3-col">
+                        <input id="addSubmit" class="w3-button w3-right" type="button" value="Submit">
                     </div>
                 </div>
             </form>
@@ -85,35 +85,27 @@
     
     
     
-    <div id="editBox" style="width:100%;">
-        <div class="w3-cyan w3-row">
-            <h3>Modifica Persona</h3>
+    <div id="editBox" style="width:80%;" class="padded10 w3-yellow">
+        <div class="w3-row">
+            <h3>Modifica
+                <a href="#" onClick="return false;"><span id="closeUpd" class='w3-right padded10 w3-red w3-round' style="font-size:14px">Annulla Modifiche <i class="fa fa-close w3-xlarge"></i></span></a> 
+            </h3>
             <form id="editForm">
                 
-                <div class="w3-col" style="width:60px">
-                    <label>id</label>
-                    <input id="editId" type="number" name="id" value="" readonly="true" class="w3-input w3-border">
-                </div>
-                <div class="w3-rest">
+                    <!--<label>id</label>-->
+                    <input id="editId" type="hidden" name="id" value="" readonly="true" class="w3-input w3-border">
                     <div class="w3-half">
-                        <div class="w3-third">
                             <!--<label>Nome</label>-->
                             <input id="editNome" type="hidden" name="nome" value="" class="w3-input w3-border">
-                        </div>
-                        <div class="w3-third">
                             <!--<label>Cognome</label>-->
                             <input id="editCognome" type="hidden" name="cognome" value="" class="w3-input w3-border">
-                        </div>
-                        <div class="w3-third">
-                            <label>ALT_NAME</label>
-                            <input id="editAltName" type="text" name="alt_name" value="" class="w3-input w3-border">
-                        </div>
+                        
+                        <label>ALT_NAME</label>
+                        <input id="editAltName" type="text" name="alt_name" value="" class="w3-input w3-border">
                     </div>
                     <div class="w3-half">
-                        <div class="w3-twothird">
                             <!--<label>Titolo</label>-->
                             <input id="editTitolo" type="hidden" name="titolo" value="" class="w3-input w3-border">
-                        </div>
                         <div class="w3-third">
                             <label>Tipologia</label>
                             <select id="editTipo" name="selectTipo" class="w3-select">
@@ -128,19 +120,28 @@
                                 ?>
                             </select>                        
                         </div>
+                        
+                        <div class="w3-twothird">
+                            <label>Link</label>
+                            <input type="text" id="editLink" name="editLink" value="" class="w3-input w3-border">
+                        </div>
+                        
+                        
                     </div>        
-                </div>
-            
+                
+                <!--
                 <div class="w3-twothird w3-center">
                     <label>biografia</label>
                     <textarea id="biografiaE" rows="4" cols="50"></textarea>
                 </div>
+                -->
                 
                 
-                <input id="editSubmit" type="button" value="Submit">
+                
+                <input id="editSubmit" class="w3-button w3-right" type="button" value="Submit">
             </form>
             
-             <a href="#" onClick="return false;"><i id="closeUpd" class="fa fa-close w3-xxlarge" style="float:right"> [annulla modifiche]</i></a>
+             
         </div>
     </div>
     <script>$('#editBox').hide();</script>
@@ -156,23 +157,42 @@
     ?>
     
     <div id="spazioPerFixedUPD" class="w3-center" style="height:200px">Fine</div>
-
+        </div>
     <?php
     $conn->close();
     ?>
     
         
     <script>
+        
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+        
+        
         //PREpendo filtro persona/sponsor/etc..
         var filtroPersona= "<div class='w3-grey w3-row w3-padding'>"+
                                 "<div id='btnProduzione' class='w3-col s2 w3-button w3-blue' onClick='filtraTipoPersona(3);'>Produzione</div>"+
                                 "<div id='btnSponsor' class='w3-col s2 w3-button w3-green' onClick='filtraTipoPersona(4);'>Sponsor</div>"+
-                                "<div id='btnSponsor' class='w3-col s2 w3-button w3-orange' onClick='filtraTipoPersona(5);'>Patrocinio</div>"+
-                                "<div id='btnSponsor' class='w3-col s2 w3-button w3-purple' onClick='filtraTipoPersona(6);'>Altro</div>"+
+                                "<div id='btnPatocinio' class='w3-col s2 w3-button w3-orange' onClick='filtraTipoPersona(5);'>Patrocinio</div>"+
+                                "<div id='btnAltro' class='w3-col s2 w3-button w3-purple' onClick='filtraTipoPersona(6);'>Altro</div>"+
                                 "<div class='w3-col s2 w3-button w3-black w3-right' onClick='rimuoviFiltroTipoPersona();'>[TUTTO]</div>"+
                             "</div>"
         $("#tabellaPersona").before(filtroPersona);
         function filtraTipoPersona(tipo){
+            sessionStorage["ultimaTipologiaSponsor"] = tipo;
+            //alert(sessionStorage["ultimaTipologiaSponsor"]);
             $(".rigaTabella").hide();
             $(".rigaTipo"+tipo).show();
             $("#addTipo").val(tipo); //scelgo categoria cliccata
@@ -183,16 +203,31 @@
         
         
         
+        var id= getUrlParameter('id');
+        var tipologia= getUrlParameter('tipologia');
+        //alert(id+" T:"+tipologia);
+        if(tipologia==3){$("#btnProduzione").trigger("click");}
+        if(tipologia==4){$("#btnSponsor").trigger("click");}
+        if(tipologia==5){$("#btnPatocinio").trigger("click");}
+        if(tipologia==6){$("#btnAltro").trigger("click");}
         
+        if(id && tipologia){
+            $("html, body").animate({ scrollTop: $('#'+id).offset().top }, 100);
+            // do fading 3 times
+            for(i=0;i<3;i++) {
+                $('#'+id).fadeTo('slow', 0.5).fadeTo('slow', 1.0);
+            }
+        }
         //FINGO CLICK ARTISTI
-        $( "#btnProduzione" ).trigger( "click" );
+        //$( "#btnProduzione" ).trigger( "click" );
+        filtraTipoPersona(sessionStorage["ultimaTipologiaSponsor"]);
     </script>
     
     <script src="../js/personaAdd.js"></script>
     <script src="../js/personaDelete.js"></script>
     <script src="../js/personaUpdate.js"></script>
     
-    </div>
+    
 </body>
 
 </html>

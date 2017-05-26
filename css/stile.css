@@ -1,5 +1,7 @@
 #corpo{padding:0 25px 0 25px;}
 .padded{padding: 25px;}
+.padded10{padding: 10px;}
+
 td > a > img{max-height:50px;}
 
 .testoTagliato{width: 100px; white-space: nowrap; overflow: hidden; text-overflow: /*ellipsis*/clip; }

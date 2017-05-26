@@ -10,9 +10,10 @@
     $alt_name= $phpAV[3];
     $titolo= $phpAV[4];
     $tipo= $phpAV[5];
+    $link= $phpAV[6];
 
-    $stmt = $conn->prepare("UPDATE Persona SET nome=?, cognome=?, alt_name=?, titolo=?, tipologia=?, biografia=? WHERE id= ?");
-    $stmt->bind_param("ssssisi", $nome, $cognome, $alt_name, $titolo, $tipo, $_POST["bio"], $id);
+    $stmt = $conn->prepare("UPDATE Persona SET nome=?, cognome=?, alt_name=?, titolo=?, tipologia=?, biografia=?, link=? WHERE id= ?");
+    $stmt->bind_param("ssssissi", $nome, $cognome, $alt_name, $titolo, $tipo, $_POST["bio"], $link, $id);
     $stmt->execute();
     $stmt->close();
 ?>

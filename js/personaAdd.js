@@ -11,6 +11,7 @@ $('#addSubmit').click(function () {
     });
     
     var popupVerifica = confirm("Vuoi davvero AGGIUNGERE la persona: " + arrayValue[2] + "?");
+    alert(arrayValue);
     if (popupVerifica == true) {
         $.ajax({
             type: "POST",

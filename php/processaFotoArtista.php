@@ -15,7 +15,11 @@
 <body style="max-width:800px; margin:0 auto;">
     <div id="corpo">
         <!-- "banner" -->
-        <a href="../php/processaPersona.php">
+        <?php 
+            if($_GET["tipologia"] == 1 || $_GET["tipologia"] == 2) echo '<a href="../php/processaPersona.php?id='.$_GET["id"].'&tipologia='.$_GET["tipologia"].'">';
+            if($_GET["tipologia"] == 3 || $_GET["tipologia"] == 4 || $_GET["tipologia"] == 5 || $_GET["tipologia"] == 6) echo '<a href="../php/processaSponsor.php?id='.$_GET["id"].'&tipologia='.$_GET["tipologia"].'">';
+        ?>
+        <!--<a href="../php/processaPersona.php">-->
             <div class="w3-row w3-center w3-xlarge w3-green">
                 <div class="w3-third w3-hover-orange"><i class='fa fa-undo fa-2x' aria-hidden='true'></i> </div>
                 <div class="w3-twothird"> Torna alla lista artisti</div>
